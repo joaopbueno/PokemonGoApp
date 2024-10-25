@@ -12,7 +12,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     var gerenciadorLocalizacao = CLLocationManager()
 
-    private lazy var mapview: MKMapView = {
+    private lazy var mapView: MKMapView = {
         let mapview = MKMapView()
         mapview.translatesAutoresizingMaskIntoConstraints = false
         mapview.showsUserLocation = true
@@ -42,7 +42,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        mapview.delegate = self
+        mapView.delegate = self
         gerenciadorLocalizacao.delegate = self
         gerenciadorLocalizacao.desiredAccuracy = kCLLocationAccuracyBest
         gerenciadorLocalizacao.requestWhenInUseAuthorization()
@@ -52,8 +52,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         setupViews()
     }
     
-<<<<<<< HEAD
-=======
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let currentLocation = locations.last else { return }
+        
+        let regionRadius: CLLocationDistance = 500
+        let region = MKCoordinateRegion(center: currentLocation.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+        
+        mapView.setRegion(region, animated: true)
+    }
+    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status != .authorizedWhenInUse && status != .notDetermined {
             let alertController = UIAlertController(title: "Permissão de localização", message: "Necessario permissão para acesso a sua localização! Por favor habilite.", preferredStyle: .alert)
@@ -72,13 +79,17 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
     }
     
->>>>>>> fc20126 (Botoes e assets)
     @objc func centerPlayer() {
-        print("clicou")
+        guard let currentLocation = gerenciadorLocalizacao.location?.coordinate else { return }
+        
+        let regionRadius: CLLocationDistance = 500
+        let region = MKCoordinateRegion(center: currentLocation, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+        
+        mapView.setRegion(region, animated: true)
     }
     
     @objc func pokebolaAcao() {
-        print("clicou")
+        print("clicou testando essa merda de novo não aguento mais ")
     }
     
     private func setupViews() {
@@ -87,21 +98,21 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     private func setHierarchy() {
-        view.addSubview(mapview)
+        view.addSubview(mapView)
         
-        mapview.addSubview(bussolaButton)
-        mapview.addSubview(pokebolaButton)
+        mapView.addSubview(bussolaButton)
+        mapView.addSubview(pokebolaButton)
     }
     
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            mapview.topAnchor.constraint(equalTo: view.topAnchor),
-            mapview.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            mapview.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            mapview.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            mapView.topAnchor.constraint(equalTo: view.topAnchor),
+            mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             
-            bussolaButton.topAnchor.constraint(equalTo: mapview.topAnchor, constant: 60),
-            bussolaButton.trailingAnchor.constraint(equalTo: mapview.trailingAnchor, constant: -20),
+            bussolaButton.topAnchor.constraint(equalTo: mapView.topAnchor, constant: 60),
+            bussolaButton.trailingAnchor.constraint(equalTo: mapView.trailingAnchor, constant: -20),
             
             pokebolaButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             pokebolaButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
