@@ -48,16 +48,6 @@
 			path = PokemonGoApp;
 			sourceTree = "<group>";
 		};
-		90D148F02CCBD455003E3A1B /* PokemonGoAppTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = PokemonGoAppTests;
-			sourceTree = "<group>";
-		};
-		90D148FA2CCBD455003E3A1B /* PokemonGoAppUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = PokemonGoAppUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				90D148D92CCBD453003E3A1B /* PokemonGoApp */,
-				90D148F02CCBD455003E3A1B /* PokemonGoAppTests */,
-				90D148FA2CCBD455003E3A1B /* PokemonGoAppUITests */,
 				90D148D82CCBD453003E3A1B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -143,9 +131,6 @@
 			dependencies = (
 				90D148EF2CCBD455003E3A1B /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				90D148F02CCBD455003E3A1B /* PokemonGoAppTests */,
-			);
 			name = PokemonGoAppTests;
 			packageProductDependencies = (
 			);
@@ -165,9 +150,6 @@
 			);
 			dependencies = (
 				90D148F92CCBD455003E3A1B /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				90D148FA2CCBD455003E3A1B /* PokemonGoAppUITests */,
 			);
 			name = PokemonGoAppUITests;
 			packageProductDependencies = (
@@ -293,9 +275,9 @@
 				INFOPLIST_FILE = PokemonGoApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -320,9 +302,9 @@
 				INFOPLIST_FILE = PokemonGoApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
