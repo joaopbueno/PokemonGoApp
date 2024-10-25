@@ -49,6 +49,21 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         gerenciadorLocalizacao.startUpdatingLocation()
         
         
+        Timer.scheduledTimer(withTimeInterval: 8, repeats: true) { timer in
+            let latAleatoria = (Double(arc4random_uniform(500))-250) / 100000.0
+            let lonAleatoria = (Double(arc4random_uniform(500))-250) / 100000.0
+            
+            if let coordenadas = self.gerenciadorLocalizacao.location?.coordinate {
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = coordenadas
+                annotation.coordinate.latitude += latAleatoria
+                annotation.coordinate.longitude += lonAleatoria
+                
+                self.mapView.addAnnotation(annotation)
+            }
+            
+        }
+        
         setupViews()
     }
     
