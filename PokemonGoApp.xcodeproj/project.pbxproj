@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		90D1491A2CCBD946003E3A1B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D149192CCBD946003E3A1B /* MapKit.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		90D148EE2CCBD455003E3A1B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		90D148D72CCBD453003E3A1B /* PokemonGoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonGoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90D148ED2CCBD455003E3A1B /* PokemonGoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokemonGoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		90D148F72CCBD455003E3A1B /* PokemonGoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokemonGoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		90D149192CCBD946003E3A1B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -55,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90D1491A2CCBD946003E3A1B /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				90D148D92CCBD453003E3A1B /* PokemonGoApp */,
+				90D149182CCBD946003E3A1B /* Frameworks */,
 				90D148D82CCBD453003E3A1B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,6 +98,14 @@
 				90D148F72CCBD455003E3A1B /* PokemonGoAppUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		90D149182CCBD946003E3A1B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				90D149192CCBD946003E3A1B /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
