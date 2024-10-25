@@ -9,6 +9,8 @@ import UIKit
 import MapKit
 
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+    
+    var gerenciadorLocalizacao = CLLocationManager()
 
     private lazy var mapview: MKMapView = {
         let mapview = MKMapView()
@@ -40,9 +42,37 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        mapview.delegate = self
+        gerenciadorLocalizacao.delegate = self
+        gerenciadorLocalizacao.desiredAccuracy = kCLLocationAccuracyBest
+        gerenciadorLocalizacao.requestWhenInUseAuthorization()
+        gerenciadorLocalizacao.startUpdatingLocation()
+        
+        
         setupViews()
     }
     
+<<<<<<< HEAD
+=======
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status != .authorizedWhenInUse && status != .notDetermined {
+            let alertController = UIAlertController(title: "Permissão de localização", message: "Necessario permissão para acesso a sua localização! Por favor habilite.", preferredStyle: .alert)
+            
+            let acaoConfiguracoes = UIAlertAction(title: "Abrir configurações", style: .default, handler: {(alertaConfiguracao) in
+                if let configuracoes = URL(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open( configuracoes as URL)
+                }
+            })
+            let acaoCancelar = UIAlertAction(title: "Cancelar", style: .default, handler: nil)
+            
+            alertController.addAction(acaoConfiguracoes)
+            alertController.addAction(acaoCancelar)
+            
+            present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+>>>>>>> fc20126 (Botoes e assets)
     @objc func centerPlayer() {
         print("clicou")
     }
