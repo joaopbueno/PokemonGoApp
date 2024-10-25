@@ -11,6 +11,8 @@ import MapKit
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     var gerenciadorLocalizacao = CLLocationManager()
+    var coreDataPokemon = CoreDataPokemon()
+    var pokemons: [Pokemon] = []
 
     private lazy var mapView: MKMapView = {
         let mapview = MKMapView()
@@ -48,6 +50,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         gerenciadorLocalizacao.requestWhenInUseAuthorization()
         gerenciadorLocalizacao.startUpdatingLocation()
         
+        //recuperando pokemons
+        self.coreDataPokemon = CoreDataPokemon()
+        self.pokemons = self.coreDataPokemon.recuperarTodosOsPokemons()
+        
         
         Timer.scheduledTimer(withTimeInterval: 8, repeats: true) { timer in
             let latAleatoria = (Double(arc4random_uniform(500))-250) / 100000.0
@@ -65,6 +71,17 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
         
         setupViews()
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: nil)
+        annotationView.image = UIImage(named: "pikachu-2")
+        
+        if annotation is MKUserLocation {
+            annotationView.image = UIImage(named: "player")
+        }
+        
+        return annotationView
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -137,4 +154,5 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
 
 }
+
 
