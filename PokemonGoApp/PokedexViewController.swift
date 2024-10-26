@@ -31,8 +31,6 @@ class PokedexViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.pokemonsCapturados = coreData.recuperarTodosPokemonsCapturados(capturado: true)
         self.pokemonsNaoCapturados = coreData.recuperarTodosPokemonsCapturados(capturado: false)
         
-        print(String(pokemonsNaoCapturados.count))
-        
         setupView()
     }
     

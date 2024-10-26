@@ -18,6 +18,17 @@ class CoreDataPokemon {
         return context!
     }
 
+    func salvarPokemon(pokemon: Pokemon){
+        let context = self.getContext()
+        pokemon.capturado = true
+        
+        do{
+            try context.save()
+        }catch{
+            
+        }
+        
+    }
     
     func adicionarTodosPokemons() {
         let context = self.getContext()

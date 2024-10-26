@@ -79,6 +79,27 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         setupViews()
     }
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        let anotacao = view.annotation
+        mapView.deselectAnnotation(anotacao, animated: true)
+        
+        
+        let pokemon = (view.annotation as! PokemonAnotacao).pokemon
+        
+        if anotacao is MKUserLocation {
+            return
+        }
+        
+        self.coreDataPokemon.salvarPokemon(pokemon: pokemon)
+        self.mapView.removeAnnotation(anotacao!)
+        
+        let alertController = UIAlertController(title: "Parabéns", message: "Voce capturou o pokemon \(pokemon.nome!)", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
+        alertController.addAction(ok)
+        self.presentationController?.presentedViewController.present(alertController, animated: true, completion: nil)
+    }
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: nil)
         
