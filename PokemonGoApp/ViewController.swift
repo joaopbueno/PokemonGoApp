@@ -132,7 +132,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     @objc func pokebolaAcao() {
-        print("clicou testando essa merda de novo não aguento mais ")
+        self.navigationController?.pushViewController(PokedexViewController(), animated: true)
     }
     
     private func setupViews() {
